@@ -19,7 +19,8 @@ const Root: React.FC = () => {
         {isEmpty(token) || isNil(token) ? (
           <Stack.Navigator
             screenOptions={{ headerShown: false }}
-            initialRouteName="SignIn">
+            // initialRouteName="SignIn"
+            >
             <Stack.Screen
               name="SignInOptions"
               component={SignInOptionsScreen}

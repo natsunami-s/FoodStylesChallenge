@@ -33,7 +33,7 @@ const SignUpContainer: React.FC<TSignUpContainer> = ({
     Keyboard.dismiss();
     try {
       const res = await signUpWithEmail();
-      console.warn(res);
+      // console.warn(res);
       dispatch(
         setUserData({
           user: res.data.signUpWithEmail.user,
@@ -46,6 +46,10 @@ const SignUpContainer: React.FC<TSignUpContainer> = ({
     }
   };
 
+  const onBackPress = () => {
+    navigation.goBack();
+  };
+
   return (
     <SignUpScreen
       values={values}
@@ -55,6 +59,7 @@ const SignUpContainer: React.FC<TSignUpContainer> = ({
       isButtonDisabled={!isValid || !dirty}
       isLoading={loading}
       onSignUpPress={onSignUpPress}
+      onBackPress={onBackPress}
     />
   );
 };

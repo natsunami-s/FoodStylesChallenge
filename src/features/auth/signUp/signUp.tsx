@@ -22,6 +22,7 @@ const SignUpScreen: React.FC<TSignUpScreen> = ({
   isLoading,
   isButtonDisabled,
   onSignUpPress,
+  onBackPress,
 }) => (
   <ScrollView
     style={styles.container}
@@ -31,7 +32,7 @@ const SignUpScreen: React.FC<TSignUpScreen> = ({
     bounces={false}
     showsVerticalScrollIndicator={false}>
     <GradientBackground>
-      <Header title={Strings.signUp.title} />
+      <Header title={Strings.signUp.title} onBackPress={onBackPress} />
       <View style={styles.content}>
         <InputWithLabel
           value={values.name}

@@ -17,6 +17,7 @@ const SignInContainer: React.FC<TSignInContainer> = ({
   values,
   errors,
   isValid,
+  dirty,
 }) => {
   const [logInWithEmail, { loading }] = useMutation(LOG_IN_WITH_EMAIL, {
     variables: {
@@ -44,15 +45,20 @@ const SignInContainer: React.FC<TSignInContainer> = ({
     }
   };
 
+  const onBackPress = () => {
+    navigation.goBack();
+  };
+
   return (
     <SignInScreen
       values={values}
       errors={errors}
       handleChange={handleChange}
       handleBlur={handleBlur}
-      isButtonDisabled={!isValid}
+      isButtonDisabled={!isValid || !dirty}
       isLoading={loading}
       onSignInPress={onSignInPress}
+      onBackPress={onBackPress}
     />
   );
 };
@@ -65,5 +71,5 @@ export default withFormik<TSignInContainer & FormProps, FormValues>({
   validationSchema: signInSchema,
   handleSubmit: () => {},
   displayName: 'signIn',
-  validateOnMount: true,
+  validateOnMount: false,
 })(SignInContainer);
