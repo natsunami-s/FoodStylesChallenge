@@ -1,10 +1,12 @@
 import { Keyboard } from 'react-native';
 import { withFormik } from 'formik';
 import React from 'react';
+import { useMutation } from '@apollo/client';
 
 import { FormProps, FormValues, TSignUpContainer } from './types';
 import { signUpSchema } from 'utils/validations';
 import SignUpScreen from './signUp';
+import { SIGN_UP_WITH_EMAIL } from 'graphql/mutations/signUpWithEmail';
 
 const SignUpContainer: React.FC<TSignUpContainer> = ({
   navigation,
@@ -14,12 +16,23 @@ const SignUpContainer: React.FC<TSignUpContainer> = ({
   errors,
   isValid,
   dirty,
-  validateOnBlur,
 }) => {
-  const onSignUpPress = () => {
-    vali
+  const [signUpWithEmail, { loading }] = useMutation(SIGN_UP_WITH_EMAIL, {
+    variables: {
+      name: values.name,
+      email: values.email?.trim(),
+      password: values.password,
+    },
+  });
+
+  const onSignUpPress = async () => {
     Keyboard.dismiss();
-    // mutate();
+    try {
+      const res = await signUpWithEmail();
+      console.warn(res);
+    } catch (e) {
+      console.warn('e', e.networkError.result.errors);
+    }
   };
 
   return (
@@ -29,7 +42,7 @@ const SignUpContainer: React.FC<TSignUpContainer> = ({
       handleChange={handleChange}
       handleBlur={handleBlur}
       isButtonDisabled={!isValid || !dirty}
-      // isLoading={isLoading}
+      isLoading={loading}
       onSignUpPress={onSignUpPress}
     />
   );
@@ -46,5 +59,3 @@ export default withFormik<TSignUpContainer & FormProps, FormValues>({
   displayName: 'signIn',
   validateOnMount: false,
 })(SignUpContainer);
-
-// export default SignUpContainer;

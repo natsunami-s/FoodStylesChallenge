@@ -1,10 +1,12 @@
 import { Keyboard } from 'react-native';
 import { withFormik } from 'formik';
 import React from 'react';
+import { useMutation } from '@apollo/client';
 
 import { FormProps, FormValues, TProfileContainer } from './types';
 import { editProfileSchema } from 'utils/validations';
 import ProfileScreen from './profile';
+import { UPDATE_USER } from 'graphql/mutations/updateUser';
 
 const ProfileContainer: React.FC<TProfileContainer> = ({
   navigation,
@@ -15,9 +17,21 @@ const ProfileContainer: React.FC<TProfileContainer> = ({
   isValid,
   dirty,
 }) => {
-  const onDonePress = () => {
+  const [updateUser, { loading }] = useMutation(UPDATE_USER, {
+    variables: {
+      name: values.name,
+      email: values.email?.trim(),
+    },
+  });
+
+  const onDonePress = async () => {
     Keyboard.dismiss();
-    // mutate();
+    try {
+      const res = await updateUser();
+      console.warn(res);
+    } catch (e) {
+      console.warn('e', e.networkError.result.errors);
+    }
   };
 
   const onLogOutPress = () => {};
@@ -29,7 +43,7 @@ const ProfileContainer: React.FC<TProfileContainer> = ({
       handleChange={handleChange}
       handleBlur={handleBlur}
       isButtonDisabled={!isValid || !dirty}
-      // isLoading={isLoading}
+      isLoading={loading}
       onDonePress={onDonePress}
       onLogOutPress={onLogOutPress}
     />

@@ -20,7 +20,6 @@ export type TSignUpScreen = {
   isLoading: boolean;
   isButtonDisabled: boolean;
   onSignUpPress: () => void;
-  onForgotPasswordPress: () => void;
 } & Pick<
   FormikProps<FormValues>,
   'values' | 'errors' | 'handleChange' | 'handleBlur'
