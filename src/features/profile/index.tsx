@@ -1,4 +1,4 @@
-import { Keyboard } from 'react-native';
+import { Alert, Keyboard } from 'react-native';
 import { withFormik } from 'formik';
 import React, { useEffect } from 'react';
 import { useMutation } from '@apollo/client';
@@ -14,6 +14,7 @@ import {
   getUserEmail,
   getUserName,
 } from 'redux/reducers/user/selectors';
+import { Strings } from 'constants';
 
 const ProfileContainer: React.FC<TProfileContainer> = ({
   navigation,
@@ -43,8 +44,8 @@ const ProfileContainer: React.FC<TProfileContainer> = ({
     Keyboard.dismiss();
     try {
       const res = await updateUser();
-      console.warn(res);
       dispatch(setUser(res.data.updateUser));
+      Alert.alert('', Strings.profile.successMsg);
     } catch (e) {
       console.warn('e', e.networkError.result.errors);
     }
@@ -62,7 +63,7 @@ const ProfileContainer: React.FC<TProfileContainer> = ({
       errors={errors}
       handleChange={handleChange}
       handleBlur={handleBlur}
-      // isButtonDisabled={!isValid}
+      isButtonDisabled={!isValid}
       isLoading={loading}
       onDonePress={onDonePress}
       onLogOutPress={onLogOutPress}

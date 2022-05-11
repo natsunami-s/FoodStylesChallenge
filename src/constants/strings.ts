@@ -19,11 +19,11 @@ export default {
     nameOnSharedCards: 'Name shown on your shared cards',
     email: 'Email',
     password: 'Password',
-    passwordRequirement: '(min 6 characters)'
+    passwordRequirement: '(min 6 characters)',
   },
   validations: {
     emailOrPassword: 'Email or password is not correct',
-    requiredField: 'Please fill all the required fields'
+    requiredField: 'Please fill all the required fields',
   },
   signInOptions: {
     subtitle: 'Sign in to be able to save your preferences and settings.',
@@ -42,5 +42,6 @@ export default {
   },
   profile: {
     title: 'Profile',
+    successMsg: 'Profile updated successfully',
   },
 };
