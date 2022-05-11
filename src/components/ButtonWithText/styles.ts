@@ -19,7 +19,6 @@ export default StyleSheet.create({
     fontFamily: Fonts.primaryBold,
     fontSize: scale(16),
     color: Colors.white,
-    // textTransform: 'uppercase',
     letterSpacing: 1,
   },
 });

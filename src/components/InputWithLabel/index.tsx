@@ -20,6 +20,7 @@ interface Props {
   placeholder?: string;
   containerStyle?: StyleProp<ViewStyle>;
   inputStyle?: StyleProp<TextStyle>;
+  labelStyle?: StyleProp<TextStyle>;
   onChangeText: (text: string) => void;
   onBlur?: (e: any) => void;
 }
@@ -31,12 +32,13 @@ const InputWithLabel: React.FC<Props> = ({
   placeholder,
   containerStyle,
   inputStyle,
+  labelStyle,
   onChangeText,
   onBlur,
 }) => (
   <View style={[styles.container, containerStyle]}>
     <View>
-      {!!label && <Text style={styles.label}>{label}</Text>}
+      {!!label && <Text style={[styles.label, labelStyle]}>{label}</Text>}
       <TextInput
         value={value}
         multiline={multiline}

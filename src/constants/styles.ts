@@ -25,7 +25,5 @@ export default StyleSheet.create({
     paddingTop: scale(7),
     paddingBottom: scale(7),
     paddingLeft: scale(11),
-    borderWidth: 1,
-    borderColor: Colors.brightOrange,
   },
 });
