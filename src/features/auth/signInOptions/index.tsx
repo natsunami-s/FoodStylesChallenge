@@ -12,11 +12,7 @@ const SignInOptionsContainer: React.FC<TSignInOptionsContainer> = ({
   };
 
   const onSignUpPress = () => {
-    navigation.navigate('SignIn');
-  };
-
-  const onBackPress = () => {
-    navigation.goBack();
+    navigation.navigate('SignUp');
   };
 
   return (

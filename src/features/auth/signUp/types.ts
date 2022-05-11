@@ -5,22 +5,19 @@ export interface FormValues {
   email: string;
   password: string;
 }
-
 export interface FormProps {
   name: string;
   email: string;
   password: string;
 }
 
-export type TSignUpContainer = {
-  // signIn: () => void;
-} & FormikProps<FormValues>;
+export type TSignUpContainer = {} & FormikProps<FormValues>;
 
 export type TSignUpScreen = {
   isLoading: boolean;
   isButtonDisabled: boolean;
   onSignUpPress: () => void;
-  onForgotPasswordPress: () => void;
+  onBackPress: () => void;
 } & Pick<
   FormikProps<FormValues>,
   'values' | 'errors' | 'handleChange' | 'handleBlur'

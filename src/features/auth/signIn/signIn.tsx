@@ -22,6 +22,7 @@ const SignInScreen: React.FC<TSignInScreen> = ({
   isLoading,
   isButtonDisabled,
   onSignInPress,
+  onBackPress,
 }) => (
   <ScrollView
     style={styles.container}
@@ -31,7 +32,7 @@ const SignInScreen: React.FC<TSignInScreen> = ({
     bounces={false}
     showsVerticalScrollIndicator={false}>
     <GradientBackground>
-      <Header title={Strings.logIn.title} />
+      <Header title={Strings.logIn.title} onBackPress={onBackPress} />
       <View style={styles.content}>
         <InputWithLabel
           value={values.email}

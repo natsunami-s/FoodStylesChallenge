@@ -10,14 +10,13 @@ export interface FormProps {
   password: string;
 }
 
-export type TSignInContainer = {
-  // signIn: () => void;
-} & FormikProps<FormValues>;
+export type TSignInContainer = {} & FormikProps<FormValues>;
 
 export type TSignInScreen = {
   isLoading: boolean;
   isButtonDisabled: boolean;
   onSignInPress: () => void;
+  onBackPress: () => void;
 } & Pick<
   FormikProps<FormValues>,
   'values' | 'errors' | 'handleChange' | 'handleBlur'
