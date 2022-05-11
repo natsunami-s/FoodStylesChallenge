@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { User } from 'types/user';
+import { User, UserData } from 'types/user';
 
 export const userSlice = createSlice({
   name: 'user',
@@ -13,7 +13,7 @@ export const userSlice = createSlice({
     setUser: (state, action) => {
       state.user = action.payload;
     },
-    setUserData: (state, action) => {
+    setUserData: (state, action: { payload: UserData }) => {
       state.user = action.payload.user;
       state.accessToken = action.payload.accessToken;
       state.refreshToken = action.payload.refreshToken;

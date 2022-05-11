@@ -67,7 +67,7 @@ const SignUpScreen: React.FC<TSignUpScreen> = ({
         <ButtonWithText
           text={Strings.buttons.signUp}
           textStyle={styles.buttonText}
-          // disabled={isButtonDisabled}
+          disabled={isButtonDisabled}
           isLoading={isLoading}
           onPress={onSignUpPress}
         />
