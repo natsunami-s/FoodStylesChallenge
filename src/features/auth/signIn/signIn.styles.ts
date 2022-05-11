@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { Colors, Fonts } from 'constants';
+import { Colors } from 'constants';
 import { scale } from 'utils/responsiveDimensions';
 
 export default StyleSheet.create({
@@ -11,7 +11,6 @@ export default StyleSheet.create({
   contentContainer: {
     alignItems: 'center',
     backgroundColor: Colors.white,
-    // paddingBottom: scale(100),
     height: '100%',
   },
   content: {

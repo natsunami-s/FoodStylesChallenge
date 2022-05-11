@@ -22,9 +22,9 @@ export const userSlice = createSlice({
 });
 
 export const resetAppState = () => ({
-    type: 'RESET_APP_STATE',
-  });
-// Action creators are generated for each case reducer function
+  type: 'RESET_APP_STATE',
+});
+
 export const { setUser, setUserData } = userSlice.actions;
 
 export default userSlice.reducer;

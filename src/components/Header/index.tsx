@@ -1,7 +1,7 @@
 import { Text, View } from 'react-native';
 import React from 'react';
 
-import { Colors, Images } from 'constants';
+import { Images } from 'constants';
 import styles from './styles';
 import ImageButton from 'components/ImageButton';
 

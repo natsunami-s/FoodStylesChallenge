@@ -1,21 +1,14 @@
 import { Text, View } from 'react-native';
 import React from 'react';
 
-import {
-  ButtonWithText,
-  ErrorMessage,
-  Header,
-  InputWithLabel,
-  Spacer,
-} from 'components';
-import { SharedStyles, Strings } from 'constants';
+import { ButtonWithText, InputWithLabel, Spacer } from 'components';
+import { Strings } from 'constants';
 import { TProfileScreen } from './types';
 import { scale } from 'utils/responsiveDimensions';
 import styles from './profile.styles';
 
 const ProfileScreen: React.FC<TProfileScreen> = ({
   values,
-  errors,
   handleChange,
   handleBlur,
   isLoading,
@@ -42,9 +35,6 @@ const ProfileScreen: React.FC<TProfileScreen> = ({
         onChangeText={handleChange('email')}
         onBlur={handleBlur('email')}
       />
-      {/* {(!!errors.email || !!errors.password) && (
-          <ErrorMessage errorMsg={errors.email || errors.password} />
-        )} */}
       <Spacer height={scale(330)} />
       <ButtonWithText
         text={Strings.buttons.logOut}
@@ -56,7 +46,6 @@ const ProfileScreen: React.FC<TProfileScreen> = ({
       <ButtonWithText
         text={Strings.buttons.done}
         containerStyle={styles.doneButton}
-        // textStyle={styles.logOutButtonText}
         disabled={isButtonDisabled}
         isLoading={isLoading}
         onPress={onDonePress}

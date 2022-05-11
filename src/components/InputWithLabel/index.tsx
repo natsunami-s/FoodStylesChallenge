@@ -42,7 +42,6 @@ const InputWithLabel: React.FC<Props> = ({
       <TextInput
         value={value}
         multiline={multiline}
-        // secureTextEntry={setImmediate}
         placeholder={placeholder}
         placeholderTextColor={Colors.lightGray}
         style={[styles.input, inputStyle]}

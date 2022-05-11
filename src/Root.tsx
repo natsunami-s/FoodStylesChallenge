@@ -21,10 +21,7 @@ const Root: React.FC = () => {
       <SafeAreaView style={[styles.container]}>
         <NavigationContainer>
           {isEmpty(token) || isNil(token) ? (
-            <Stack.Navigator
-              screenOptions={{ headerShown: false }}
-              // initialRouteName="SignIn"
-            >
+            <Stack.Navigator screenOptions={{ headerShown: false }}>
               <Stack.Screen
                 name="SignInOptions"
                 component={SignInOptionsScreen}

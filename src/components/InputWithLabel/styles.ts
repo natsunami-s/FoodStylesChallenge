@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { Colors, Fonts, SharedStyles } from 'constants';
+import { SharedStyles } from 'constants';
 import { scale } from 'utils/responsiveDimensions';
 
 export default StyleSheet.create({
@@ -17,6 +17,5 @@ export default StyleSheet.create({
   },
   input: {
     ...SharedStyles.input,
-    // paddingBottom: 0
   },
 });
