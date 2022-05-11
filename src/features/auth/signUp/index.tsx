@@ -33,7 +33,6 @@ const SignUpContainer: React.FC<TSignUpContainer> = ({
     Keyboard.dismiss();
     try {
       const res = await signUpWithEmail();
-      // console.warn(res);
       dispatch(
         setUserData({
           user: res.data.signUpWithEmail.user,
