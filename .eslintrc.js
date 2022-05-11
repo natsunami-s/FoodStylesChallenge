@@ -1,16 +1,141 @@
 module.exports = {
-  root: true,
-  extends: '@react-native-community',
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
-  overrides: [
-    {
-      files: ['*.ts', '*.tsx'],
-      rules: {
-        '@typescript-eslint/no-shadow': ['error'],
-        'no-shadow': 'off',
-        'no-undef': 'off',
+  parserOptions: {
+    ecmaVersion: 2021,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
+    warnOnUnsupportedTypeScriptVersion: true,
+  },
+  extends: [
+    'airbnb',
+    'prettier',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:import/typescript',
+    'prettier/@typescript-eslint',
+  ],
+  plugins: [
+    '@typescript-eslint',
+    'prettier',
+    'react-native',
+    'sort-imports-es6-autofix',
+  ],
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     },
-  ],
+    react: {
+      version: 'detect',
+    },
+  },
+  rules: {
+    'import/no-named-as-default': 1,
+    'import/no-unresolved': [
+      2,
+      {
+        ignore: ['@src'],
+      },
+    ],
+    'import/extensions': 0,
+    'react/jsx-uses-vars': [2],
+    'react/no-unescaped-entities': 0,
+    '@typescript-eslint/no-empty-function': 0,
+    'no-console': 1,
+    'global-require': 0,
+    'comma-dangle': 2,
+    'comma-spacing': 2,
+    'no-underscore-dangle': 0,
+    'class-methods-use-this': 0,
+    'prefer-const': 1,
+    'function-call-argument-newline': ['error', 'consistent'],
+    'object-curly-spacing': 2,
+    'object-property-newline': ['error', {allowAllPropertiesOnSameLine: true}],
+    indent: 2,
+    'react/jsx-one-expression-per-line': 0,
+    'jsx-a11y/label-has-associated-control': [
+      2,
+      {
+        depth: 3,
+      },
+    ],
+    'jsx-a11y/label-has-for': 'off',
+    'spaced-comment': [
+      'error',
+      'always',
+      {
+        line: {
+          markers: ['/'],
+          exceptions: ['-', '+'],
+        },
+        block: {
+          markers: ['!'],
+          exceptions: ['*'],
+          balanced: true,
+        },
+      },
+    ],
+    'import/prefer-default-export': 0,
+    'import/order': 0,
+    'arrow-body-style': 0,
+    'react/jsx-filename-extension': [
+      'error',
+      {extensions: ['.js', '.jsx', '.ts', '.tsx']},
+    ],
+    'react/prop-types': [1, {skipUndeclared: true}],
+    'react/prefer-stateless-function': [0],
+    'react/self-closing-comp': 0,
+    '@typescript-eslint/consistent-type-assertions': 'warn',
+    '@typescript-eslint/explicit-module-boundary-types': 0,
+    'no-array-constructor': 'off',
+    '@typescript-eslint/no-array-constructor': 'warn',
+    '@typescript-eslint/no-namespace': 'error',
+    'no-use-before-define': 'off',
+    '@typescript-eslint/no-use-before-define': [
+      'warn',
+      {
+        functions: false,
+        classes: false,
+        variables: false,
+        typedefs: false,
+      },
+    ],
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': [
+      1,
+      {
+        args: 'none',
+        ignoreRestSiblings: true,
+      },
+    ],
+    'no-useless-constructor': 'off',
+    'no-return-assign': 0,
+    semi: 2,
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-useless-constructor': 'warn',
+    '@typescript-eslint/camelcase': 0,
+    camelcase: 0,
+    'react/no-typos': 1,
+    'react/jsx-fragments': 0,
+    'react/state-in-constructor': 0,
+    'react/no-unused-state': 1,
+    'react/jsx-props-no-spreading': 0,
+    'react-native/no-unused-styles': 1,
+    'react-native/split-platform-components': 2,
+    'react-native/no-inline-styles': 'error',
+    'react-native/no-color-literals': 2,
+    // 'react-native/split-platform-components': 0,
+    quotes: 2,
+    'no-trailing-spaces': 2,
+    'sort-imports-es6-autofix/sort-imports-es6': [
+      1,
+      {
+        ignoreCase: false,
+        ignoreMemberSort: false,
+        memberSyntaxSortOrder: ['all', 'multiple', 'single', 'none'],
+      },
+    ],
+  },
 };
