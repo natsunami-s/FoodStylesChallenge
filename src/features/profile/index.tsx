@@ -2,11 +2,14 @@ import { Keyboard } from 'react-native';
 import { withFormik } from 'formik';
 import React from 'react';
 import { useMutation } from '@apollo/client';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { FormProps, FormValues, TProfileContainer } from './types';
 import { editProfileSchema } from 'utils/validations';
 import ProfileScreen from './profile';
 import { UPDATE_USER } from 'graphql/mutations/updateUser';
+import { resetAppState } from 'redux/reducers/user/reducer';
+import { getAccessToken } from 'redux/reducers/user/selectors';
 
 const ProfileContainer: React.FC<TProfileContainer> = ({
   navigation,
@@ -34,7 +37,11 @@ const ProfileContainer: React.FC<TProfileContainer> = ({
     }
   };
 
-  const onLogOutPress = () => {};
+  const dispatch = useDispatch();
+
+  const onLogOutPress = () => {
+    dispatch(resetAppState());
+  };
 
   return (
     <ProfileScreen

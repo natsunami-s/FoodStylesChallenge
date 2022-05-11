@@ -2,14 +2,13 @@ import { Keyboard } from 'react-native';
 import { withFormik } from 'formik';
 import React from 'react';
 import { useMutation } from '@apollo/client';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { FormProps, FormValues, TSignInContainer } from './types';
 import { signInSchema } from 'utils/validations';
 import SignInScreen from './signIn';
 import { LOG_IN_WITH_EMAIL } from 'graphql/mutations/logInWithEmail';
-import { setUserData } from 'redux/ducks/user/reducer';
-import { getAccessToken, getUser } from 'redux/ducks/user/selectors';
+import { setUserData } from 'redux/reducers/user/reducer';
 
 const SignInContainer: React.FC<TSignInContainer> = ({
   navigation,
@@ -27,14 +26,12 @@ const SignInContainer: React.FC<TSignInContainer> = ({
   });
 
   const dispatch = useDispatch();
-  const data = useSelector(getAccessToken);
-  console.warn(data);
 
   const onSignInPress = async () => {
     Keyboard.dismiss();
     try {
       const res = await logInWithEmail();
-      console.warn(res);
+      // console.warn(res);
       dispatch(
         setUserData({
           user: res.data.loginWithEmail.user,

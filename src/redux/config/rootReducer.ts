@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import userReducer from 'redux/ducks/user/reducer';
+import userReducer from 'redux/reducers/user/reducer';
 
 const appReducer = combineReducers({
   user: userReducer,
@@ -8,9 +8,10 @@ const appReducer = combineReducers({
 
 const rootReducer = (appState, action) => {
   let state = appState;
-  // if (action.type === userActionTypes.RESET_APP_STATE) {
-  //   state = undefined;
-  // }
+  if (action.type === 'RESET_APP_STATE') {
+    console.warn('d')
+    state = undefined;
+  }
 
   return appReducer(state, action);
 };

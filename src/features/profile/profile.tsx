@@ -50,8 +50,6 @@ const ProfileScreen: React.FC<TProfileScreen> = ({
         text={Strings.buttons.logOut}
         containerStyle={styles.logOutButton}
         textStyle={styles.logOutButtonText}
-        disabled={isButtonDisabled}
-        isLoading={isLoading}
         onPress={onLogOutPress}
       />
       <Spacer height={scale(41.4)} />

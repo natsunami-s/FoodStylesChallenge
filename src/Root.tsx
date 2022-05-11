@@ -6,7 +6,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { SignInOptionsScreen, SignInScreen, SignUpScreen } from 'features/auth';
 import ProfileScreen from 'features/profile';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { getAccessToken } from 'redux/ducks/user/selectors';
+import { getAccessToken } from 'redux/reducers/user/selectors';
+import { isEmpty, isNil } from 'lodash';
 
 const Root: React.FC = () => {
   const Stack = createNativeStackNavigator();
@@ -15,7 +16,7 @@ const Root: React.FC = () => {
   return (
     <SafeAreaView style={[styles.container]}>
       <NavigationContainer>
-        {token === null ? (
+        {isEmpty(token) || isNil(token) ? (
           <Stack.Navigator
             screenOptions={{ headerShown: false }}
             initialRouteName="SignIn">

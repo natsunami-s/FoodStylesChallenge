@@ -8,7 +8,7 @@ import { FormProps, FormValues, TSignUpContainer } from './types';
 import { signUpSchema } from 'utils/validations';
 import SignUpScreen from './signUp';
 import { SIGN_UP_WITH_EMAIL } from 'graphql/mutations/signUpWithEmail';
-import { setUserData } from 'redux/ducks/user/reducer';
+import { setUserData } from 'redux/reducers/user/reducer';
 
 const SignUpContainer: React.FC<TSignUpContainer> = ({
   navigation,
